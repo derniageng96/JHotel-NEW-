@@ -74,22 +74,23 @@ public class DatabasePesanan {
      * @param
      */
 
-    public static Pesanan getPesanan(Room kamar) {
-        for (int i = 0; i < PESANAN_DATABASE.size(); i++) {
-            Pesanan tes = PESANAN_DATABASE.get(i);
-            if (tes.getRoom().equals(kamar)){
-                return tes;
+    public static Pesanan getPesananAktif(Room kamar) {
+        for (Pesanan pesanan : PESANAN_DATABASE) {
+            if (pesanan.getRoom().equals(kamar)) {
+                if (pesanan.getStatusAktif() == true) {
+                    return pesanan;
+                }
             }
         }
         return null;
-        }
+    }
 
-        public static Pesanan getPesananAktif (Customer pelanggan)
-        {
-            for (int i = 0; i < PESANAN_DATABASE.size(); i++) {
-                Pesanan tes = PESANAN_DATABASE.get(i);
-                if (tes.getStatusAktif()==true&&tes.getPelanggan().equals(pelanggan)){
-                    return tes;
+        public static Pesanan getPesananAktif(Customer pelanggan) {
+            for (Pesanan pesanan : PESANAN_DATABASE) {
+                if (pesanan.getPelanggan().equals(pelanggan)) {
+                    if (pesanan.getStatusAktif() == true) {
+                        return pesanan;
+                    }
                 }
             }
             return null;

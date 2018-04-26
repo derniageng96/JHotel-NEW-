@@ -18,26 +18,28 @@ public class Customer
     protected String email;
     private Pattern pattern;
     private Matcher matcher;
+    private String password;
     /**
      * constructor dari customer 
      * @param
      */
-    public Customer( String nama, int tanggal, int bulan, int tahun, String email )
+    public Customer( String nama, int tanggal, int bulan, int tahun, String email,String password )
     {
         id = DatabaseCustomer.getLastCustomerID()+1;
         this.nama = nama;
         this.dob = new GregorianCalendar(tahun,bulan-1,tanggal).getTime();
         this.email = email;
+        this.password=password;
     }
-    
-    public Customer()
+
+    public Customer(String nama, Date dob, String email, String password)
     {
         //this.id=id;
-        //this.nama=nama;
-        //this.dob=dob;
+        this.nama=nama;
+        this.dob=dob;
         //DatabaseCustomer a = new DatabaseCustomer();
         //id = DatabaseCustomer.getLastCustomerID()+1;
-        //this.email=email;
+        this.email=email;
 
     }
     
@@ -121,7 +123,14 @@ public class Customer
     {
         this.nama=nama;
     }
-    
+    public void setPassword(String password)
+    {
+        this.password=password;
+    }
+    public String getPassword()
+    {
+        return password;
+    }
     public void setEmail(String email)
     {
     email=email;

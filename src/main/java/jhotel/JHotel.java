@@ -31,11 +31,32 @@ public class JHotel
      */
     public static void main(String[] args) 
     {
+        //SpringApplication.run(JHotel.class, args);
+        //System.out.println("\n\nTry-Catch 1 \n");
+        try{
+            DatabaseHotel.addHotel(new Hotel("Melati", new Lokasi(1, 1, "Taman Melati"), 7));
+            DatabaseHotel.addHotel(new Hotel("Mawar", new Lokasi(999, 999, "Taman Mawar"), 5));
+        }
+        catch(HotelSudahAdaException a)
+        {
+            a.getPesan();
+        }
+
+        try
+        {
+            DatabaseRoom.addRoom(new SingleRoom(DatabaseHotel.getHotel(1), "ME3011"));
+            DatabaseRoom.addRoom(new DoubleRoom(DatabaseHotel.getHotel(1), "ME5024"));
+            DatabaseRoom.addRoom(new SingleRoom(DatabaseHotel.getHotel(2), "MA101"));
+        }
+        catch(RoomSudahAdaException a)
+        {
+            a.getPesan();
+        }
         SpringApplication.run(JHotel.class, args);
-        /*System.out.println("\n\nTry-Catch 1 \n");
 
+    }
 
-        Customer A = new Customer("Derni", 17, 4,2018, "derni@gmail.com");
+        /*Customer A = new Customer("Derni", 17, 4,2018, "derni@gmail.com");
         try
         {
             DatabaseCustomer.addCustomer(A);
@@ -248,18 +269,18 @@ public class JHotel
             System.out.println(a.getPesan());
         }
 
+*/
+        //System.out.println("\n\nTry-Catch 8 \n");
 
-        System.out.println("\n\nTry-Catch 8 \n");
-
-        try
-        {
-            DatabasePesanan.removePesanan(pesan1);
-        }
-        catch (PesananTidakDitemukanException a)
-        {
-            System.out.println(a.getPesan());
-        }
-
+        //try
+        //{
+        //    DatabasePesanan.removePesanan();
+        //}
+        //catch (PesananTidakDitemukanException a)
+        //{
+         //   System.out.println(a.getPesan());
+        //}
+/*
         System.out.println("\n\n---  Hasil Akhir Pesanan  --- \n");
         System.out.println(DatabasePesanan.getPesananDatabase());
         System.out.println("\n\n---  Hasil Akhir Customer  --- \n");
@@ -268,7 +289,7 @@ public class JHotel
         System.out.println(DatabaseRoom.getRoomDatabase());
         System.out.println("\n\n---  Hasil Akhir Hotel  --- \n");
         System.out.println(DatabaseHotel.getHotelDatabase());
-        */
+*/
         //DatabaseCustomer.addCustomer(new Customer("budi", new Date(2012,12,12)));
         //DatabaseCustomer.addCustomer(new Customer("abi", new Date(2000, 12, 5)));
         //DatabaseCustomer.addCustomer(new Customer("cece", new Date(2001, 10, 10)));
@@ -413,6 +434,5 @@ public class JHotel
        */
        
     }
-        
-    }
+
 
