@@ -23,13 +23,16 @@ public class DatabaseRoom
      */
     public static boolean addRoom(Room baru) throws RoomSudahAdaException
     {
-        for (int i = 0; i < ROOM_DATABASE.size(); i++) {
-            Room tes = ROOM_DATABASE.get(i);
-            if (tes.getHotel().equals(baru.getHotel())&&tes.getNomorkamar().equals(baru.getNomorkamar())){
-                throw new RoomSudahAdaException(tes);
+        for(Room kamar : ROOM_DATABASE)
+        {
+            if(kamar.getHotel().equals(baru.getHotel()) &&
+                    kamar.getNomorkamar().equals(baru.getNomorkamar()))
+            {
+                throw new RoomSudahAdaException(kamar);
                 //return false;
             }
         }
+
         ROOM_DATABASE.add(baru);
         return true;
     }

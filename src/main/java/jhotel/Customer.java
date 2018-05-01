@@ -38,8 +38,9 @@ public class Customer
         this.nama=nama;
         this.dob=dob;
         //DatabaseCustomer a = new DatabaseCustomer();
-        //id = DatabaseCustomer.getLastCustomerID()+1;
+        id = DatabaseCustomer.getLastCustomerID()+1;
         this.email=email;
+        this.password=password;
 
     }
     
@@ -88,9 +89,9 @@ public class Customer
     
     public Date getDOB()
     {
-        DateFormat tanggal = new SimpleDateFormat("'DOB : ' dd MMMM YYYY");
-        String keluaran = tanggal.format(dob);
-        System.out.print(keluaran);
+        //DateFormat tanggal = new SimpleDateFormat("'DOB : ' dd MMMM YYYY");
+        //String keluaran = tanggal.format(dob);
+        //System.out.print(keluaran);
         return dob;
         
     }
@@ -107,7 +108,7 @@ public class Customer
 
     /**
      * method untuk menginput ID baru 
-     * @param idNew 
+     * @param
      * 
      */
     public void setID(int id)
@@ -117,7 +118,7 @@ public class Customer
 
     /**
      * method untuk menginput NamaBaru
-     * @param NamaBaru - nama baru 
+     * @param
      */
     public void setNama(String nama)
     {

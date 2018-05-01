@@ -131,7 +131,7 @@ public class Pesanan
      */
     public void setBiaya()
     {
-        this.biaya=biaya;
+        biaya = kamar.getDailyTariff() * jumlahHari;
         
     }
     public void setID()
@@ -143,10 +143,7 @@ public class Pesanan
     // * method untuk menginput data pelanggan baru 
     // * @param pelanggan - pemesan pesanan 
     // */
-    //public void setPelanggan(Customer pelanggan)
-    //{
-     //   this.pelanggan = pelanggan;
-    //}
+
 
     /**
      * method untuk menginput StatusDiproses
@@ -168,8 +165,7 @@ public class Pesanan
 
     public void setStatusAktif(boolean aktif)
     {
-        aktif=isAktif;
-        isAktif=true;
+        this.isAktif=aktif;
     }
     /**
      * method untuk melakukan pencetakkan data

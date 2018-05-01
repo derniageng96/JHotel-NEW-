@@ -1,15 +1,15 @@
 package jhotel;
 public class PesananSudahAdaException extends Exception {
 
-    private Pesanan pesanan_error;
+    private Customer pelanggan_error;
     //super.getMessage()
-    public PesananSudahAdaException(Pesanan pesanan_input)
+    public PesananSudahAdaException(Customer pelanggan_input)
     {
         super("Pesanan yang dipesan oleh: ");
-        pesanan_error=pesanan_input;
+        pelanggan_error=pelanggan_input;
     }
     public String getPesan()
     {
-        return super.getMessage() + pesanan_error.getPelanggan().getNama() + "sudah melakukan pemesanan.";
+        return super.getMessage() + pelanggan_error.getNama() + "sudah melakukan pemesanan.";
     }
 }

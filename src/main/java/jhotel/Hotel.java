@@ -59,11 +59,16 @@ public class Hotel
     {
         return lokasi;
     }
-    
+
+    public void setID(int id)
+    {
+        this.id=id;
+    }
     /**
      * method untuk memasukkan data nama 
      * @param nama - nama hotel 
      */
+
     public void setNama(String nama)
     {
         this.nama = nama;
@@ -95,12 +100,12 @@ public class Hotel
     /**
      * method untuk mencetak suatu data
      */
-    public void printData()
+    /*public void printData()
     {
         System.out.println(lokasi.getDeskripsi());
         System.out.println("Bintang : " + bintang);
         System.out.println("Nama : " + nama);
-    }
+    }*/
 }
 
 
