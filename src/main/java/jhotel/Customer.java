@@ -19,61 +19,40 @@ public class Customer
     private Pattern pattern;
     private Matcher matcher;
     private String password;
+
     /**
-     * constructor dari customer 
-     * @param
+     * Overloading Constructor dari customer
+     * @param nama berisi nama customer
+     * @param tanggal berisi tanggal
+     * @param bulan berisi bulan keberapa
+     * @param tahun berisi tahun
      */
     public Customer( String nama, int tanggal, int bulan, int tahun, String email,String password )
     {
-        id = DatabaseCustomer.getLastCustomerID()+1;
+        this.id = DatabaseCustomer.getLastCustomerID()+1;
         this.nama = nama;
-        this.dob = new GregorianCalendar(tahun,bulan-1,tanggal).getTime();
+        this.dob = new GregorianCalendar(tahun,bulan,tanggal).getTime();
         this.email = email;
         this.password=password;
     }
-
-    public Customer(String nama, Date dob, String email, String password)
+    /**
+     * Overloading Constructor dari customer
+     * @param nama berisi nama customer
+     * @param dob berisi waktu
+     */
+    public Customer(String nama, Date dob, String email)
     {
         //this.id=id;
         this.nama=nama;
         this.dob=dob;
         //DatabaseCustomer a = new DatabaseCustomer();
-        id = DatabaseCustomer.getLastCustomerID()+1;
+        //id = DatabaseCustomer.getLastCustomerID()+1;
         this.email=email;
-        this.password=password;
 
     }
-    
-    
-    //public class EmailValidator {
 
-    //private Pattern pattern;
-    //private Matcher matcher;
-
-    //private static final String EMAIL_PATTERN = 
-    //  "^[_A-Za-z0-9-\\+]+(\\.[_A-Za-z0-9-]+)*@"
-    //  + "[A-Za-z0-9-]+(\\.[A-Za-z0-9]+)*(\\.[A-Za-z]{2,})$";
-
-    //public EmailValidator() {
-    //  pattern = Pattern.compile(EMAIL_PATTERN);
-    //}
-
-    ///**
-    // * Validate hex with regular expression
-    // * 
-     //* @param hex
-     /*            hex for validation
-     * @return true valid hex, false invalid hex
-     */
-    //public boolean validate(final String hex) {
-
-    //  matcher = pattern.matcher(hex);
-    //  return matcher.matches();
-
-    //}
-    //}
     /**
-     * method untuk mendapatkan data ID 
+     * Accesor untuk objek dari class customer
      * @return id - mengembalikan nilai ID 
      */
     public int getID()
@@ -86,18 +65,21 @@ public class Customer
         return email;
         
     }
-    
+
+    /**
+     * Accessor untuk objek dob dari customer
+     * @return dob - mengembalikan dob
+     */
     public Date getDOB()
     {
-        //DateFormat tanggal = new SimpleDateFormat("'DOB : ' dd MMMM YYYY");
-        //String keluaran = tanggal.format(dob);
-        //System.out.print(keluaran);
+        DateFormat formatter = new SimpleDateFormat("'DOB : 'dd MMMM yyyy");
+        String output = formatter.format(dob);
+        System.out.println(output);
         return dob;
-        
     }
     
     /**
-     * method untuk mendapatkan data nama
+     * Accesor untuk mendapatkan data nama
      * @return nama - mendapatkan nilai nama
      */
     public String getNama()
@@ -107,8 +89,8 @@ public class Customer
     }
 
     /**
-     * method untuk menginput ID baru 
-     * @param
+     * Mutator untuk menginput ID baru
+     * @param id berisi id
      * 
      */
     public void setID(int id)
@@ -117,21 +99,35 @@ public class Customer
     }
 
     /**
-     * method untuk menginput NamaBaru
-     * @param
+     * mutator untuk menginput NamaBaru
+     * @param nama berisi nama
      */
     public void setNama(String nama)
     {
         this.nama=nama;
     }
+
+    /**
+     * mutator untuk menginput password
+     * @param password berisi password
+     */
     public void setPassword(String password)
     {
         this.password=password;
     }
+
+    /**
+     * Accessor untuk mengembalikan password
+     * @return password berisi password
+     */
     public String getPassword()
     {
         return password;
     }
+    /**
+     * mutator untuk menginput email
+     * @param email berisi email
+     */
     public void setEmail(String email)
     {
     email=email;
@@ -144,30 +140,41 @@ public class Customer
             this.email=email;
         }
     }
-    
-    //public boolean validate(final String hex) 
-    //{
 
-    //matcher = pattern.matcher(hex);
-    //return matcher.matches();
-
-    //}
     public static final Pattern VALID_EMAIL_ADDRESS_REGEX = 
     Pattern.compile("^[A-Z0-9._%+-]+@[A-Z0-9.-]+\\.[A-Z]{2,6}$", Pattern.CASE_INSENSITIVE);
 
+    /**
+     * Mutator untuk object dari class Customer
+     * untuk validasi pattern email.
+     *
+     * @param email berisi email
+     * berisi email yang ingin divaildasi.
+     *
+     * @return mathcer.find()
+     */
     public static boolean validate(String email) 
     {
         Matcher matcher = VALID_EMAIL_ADDRESS_REGEX .matcher(email);
         return matcher.find();
     }
-    
+
+    /**
+     * Mutator untuk object dari class Customer
+     * untuk menentukan nilai tanggal
+     *
+     * @param dob
+     * objek Date
+     */
     public void setDOB(Date dob)
     {
         this.dob=dob;
-        
-        
     }
-    
+
+    /**
+     * untuk mencetak String pada objek Customer
+     *
+     */
     public String toString()
     {
         if(DatabasePesanan.getPesananAktif(this) != null){
@@ -186,16 +193,7 @@ public class Customer
                     "\nE-Mail        : " +email+
                     "\nDate of Birth : " +getDOB();
         }
-        //return string;
+
+    }
     }
 
-    
-    /**
-     * method untuk mencetak data
-     */
-    public void printData()
-    {
-        System.out.println("ID : " + id);
-        System.out.println("Nama : " + nama);
-    }
-}

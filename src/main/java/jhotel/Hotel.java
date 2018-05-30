@@ -7,7 +7,6 @@ package jhotel;
  */
 public class Hotel
 {
-    // instance variables - replace the example below with your own
     private String nama;
     private Lokasi lokasi;
     private int bintang;
@@ -16,16 +15,24 @@ public class Hotel
     /**
      * Constructor for objects of class Hotel
      * @param lokasi, bintang
+     * @param nama
      */
     public Hotel(String nama, Lokasi lokasi, int bintang)
     {
         this.nama = nama;
         this.lokasi =lokasi;
         this.bintang = bintang;
-        DatabaseHotel a = new DatabaseHotel();
-        id = a.getLastHotelId()+1;
+        //DatabaseHotel a = new DatabaseHotel();
+        id = DatabaseHotel.getLastHotelId()+1;
         
     }
+
+    /**
+     * Accessor for objects of class Hotel
+     * untuk mendapatkan nilai id
+     *
+     * @return id
+     */
     public int getID()
     {
         return id;
@@ -60,6 +67,10 @@ public class Hotel
         return lokasi;
     }
 
+    /**
+     * mutator untuk memberikan nilai pada id
+     * @param id berisi id
+     */
     public void setID(int id)
     {
         this.id=id;
@@ -69,6 +80,12 @@ public class Hotel
      * @param nama - nama hotel 
      */
 
+    /**
+     * Mutator for objects of class Hotel
+     * untuk menentukan nilai nama.
+     *
+     * @param nama
+     */
     public void setNama(String nama)
     {
         this.nama = nama;
@@ -91,21 +108,16 @@ public class Hotel
     {
         this.bintang = bintang;
     }
-    
+
+    /**
+     * untuk mengembalikan nilai menjadi string
+     * @return nama, bintang, lokasi
+     */
     public String toString()
     {
         return "\nNama Hotel : "+nama+ "\nBintang : "+bintang+ "\nLokasi : "+lokasi.getDeskripsi();
     }
-    
-    /**
-     * method untuk mencetak suatu data
-     */
-    /*public void printData()
-    {
-        System.out.println(lokasi.getDeskripsi());
-        System.out.println("Bintang : " + bintang);
-        System.out.println("Nama : " + nama);
-    }*/
+
 }
 
 

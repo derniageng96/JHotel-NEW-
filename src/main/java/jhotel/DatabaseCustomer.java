@@ -12,33 +12,52 @@ public class DatabaseCustomer
     private static ArrayList<Customer> CUSTOMER_DATABASE = new ArrayList<Customer>();
     private static int LAST_CUSTOMER_ID = 0;
 
+    /**
+     * Accessor untuk object dari class DatabaseCustomer
+     * untuk membuat ArrayList berisi customer
+     *
+     * @return CUSTOMER_DATABASE
+     */
     public static ArrayList<Customer> getCustomerDatabase() {
         return CUSTOMER_DATABASE;
     }
 
+    /**
+     * Accessor untuk object dari class DatabaseCustomer
+     * untuk mendapatkan ID dari customer terakhir
+     *
+     * @return LAST_CUSTOMER_ID ID
+     *
+     */
     public static int getLastCustomerID() {
         return LAST_CUSTOMER_ID;
     }
 
     /**
-     * untuk menambahkan data customer.
+     * Metode untuk menambah data Customer
      *
-     * @return false
+     * @param baru
+     * @return true
      */
     public static boolean addCustomer(Customer baru) throws PelangganSudahAdaException
     {
         for(Customer customer : CUSTOMER_DATABASE){
             if(customer.getID() == baru.getID() || customer.getEmail().equals(baru.getEmail())){
                 throw new PelangganSudahAdaException(baru);
-                //System.out.println();
-                //return false;
+
             }
         }
         CUSTOMER_DATABASE.add(baru);
         LAST_CUSTOMER_ID = baru.getID();
         return true;
     }
-
+    /**
+     * Accessor untuk object dari class DatabaseCustomer
+     * untuk mendapatkan customer dengan id yang ditentukan
+     *
+     * @param id
+     * @return customer
+     */
     public static Customer getCustomer(int id)
     {
         for(Customer customer : CUSTOMER_DATABASE){
@@ -48,6 +67,14 @@ public class DatabaseCustomer
         }
         return null;
     }
+    /**
+     * Accessor untuk object dari class DatabaseCustomer
+     * untuk mendapatkan data login customer yang menggunakan email dan password
+     *
+     * @param email menentukan nilai email
+     * @param password menentukan nilai password
+     * @return customer
+     */
     public static Customer getCustomerLogin(String email, String password)
     {
         for(Customer customer : CUSTOMER_DATABASE )
@@ -63,24 +90,32 @@ public class DatabaseCustomer
     /**
      * untuk menghapus data customer.
      *
-     * @return false
+     * @return true
      */
     public static boolean removeCustomer(int id) throws PelangganTidakDitemukanException
     {
-        for(Customer customer : CUSTOMER_DATABASE){
-            if (customer.getID() == id){
-                Pesanan pesan = DatabasePesanan.getPesananAktif(customer);
-                try {
-                    DatabasePesanan.removePesanan(customer);
+        for(Customer pelanggan : CUSTOMER_DATABASE)
+        {
+            if(pelanggan.getID() == id)
+            {
+                try
+                {
+                    DatabasePesanan.removePesanan(
+                            DatabasePesanan.getPesananAktif(pelanggan));
                 }
-                catch (PesananTidakDitemukanException e){
-                    System.out.println(e.getPesan());
+                catch(PesananTidakDitemukanException a)
+                {
+                    throw new PelangganTidakDitemukanException(id);
                 }
-                if (CUSTOMER_DATABASE.remove(customer)){
+
+                if(CUSTOMER_DATABASE.remove(pelanggan))
+                {
                     return true;
                 }
             }
         }
-        return false;
+
+        throw new PelangganTidakDitemukanException(id);
+
     }
 }

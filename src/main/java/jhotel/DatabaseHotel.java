@@ -2,20 +2,24 @@ package jhotel;
 import java.util.ArrayList;
 
 /**
- *
+ * Class DatabaseHotel ini berisi database si booking
  * @author Derni Ageng
  * @version 2018.03.10
  */
-// Class ini digunakan untuk memproses data Hotel
 
 public class DatabaseHotel
 {
-    /*
-     * Deklarasi variable
-     */
     private static ArrayList<Hotel> HOTEL_DATABASE = new ArrayList<Hotel>();
     private static int LAST_HOTEL_ID = 0;
 
+    /**
+     * Constructor for objects of class DatabaseHotel
+     */
+    public DatabaseHotel()
+    {
+        // initialise instance variables
+
+    }
     /**
      * Metode untuk menambah Hotel
      *
@@ -49,10 +53,9 @@ public class DatabaseHotel
     }
 
     /**
-     * Metode untuk menghapus hotel
+     * Method untuk menghapus data hotel.
      *
-     * @param id id hotel
-     *
+     * @return false
      */
     public static boolean removeHotel(int id) throws HotelTidakDitemukanException
     {
@@ -77,7 +80,12 @@ public class DatabaseHotel
         throw new HotelTidakDitemukanException(id);
     }
 
-
+    /**
+     * Method untuk mendapatkan hotel dengan id yang ditentukan
+     *
+     * @param id
+     * @return hotel
+     */
     public static Hotel getHotel(int id){
         for (int i = 0; i < HOTEL_DATABASE.size(); i++) {
             Hotel tes = HOTEL_DATABASE.get(i);
@@ -88,8 +96,9 @@ public class DatabaseHotel
         return null;
     }
     /**
-     * Metode untuk mengambil data di database
+     * Method untuk membuat arraylist berisi hotel
      *
+     * @return HOTEL_DATABASE
      */
     public static ArrayList<Hotel> getHotelDatabase()
     {

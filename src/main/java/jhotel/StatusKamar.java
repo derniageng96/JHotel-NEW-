@@ -1,27 +1,30 @@
 package jhotel;
-        /**
-        * Enumeration class StatusKamar - write a description of the enum class here
-        * @author (your name here)
-+ * @version (version number or date here)
-+ */
-        public enum StatusKamar
-{
-            Status_1("Booked"), Status_2("Processed"), Status_3("Vacant") ;
-            private String status;
-            StatusKamar(String status){
-                this.status=status;
-            }
+/**
+ * Enumeration class StatusKamar
+ * @author Derni Ageng
+ * @version 2018
+ */
+        public enum StatusKamar {
+    Status_1("Booked"),
+    Status_2("Processed"),
+    Status_3("Vacant");
+    private String deskripsi;
 
-            public String status(){
-             return status;
-            }
+    /**
+     * Constructor for StatusKamar
+     *
+     * @param deskripsi status kamar
+     */
+    StatusKamar(String deskripsi) {
+        this.deskripsi = deskripsi;
+    }
 
-            public String toString()
-            {
-                return status;
-            }
-        }
-
-        enum Status
-{
-        }
+    /**
+     * pengembalian nilai enum yang dipanggil
+     *
+     * @return status status kamar
+     */
+    public String toString() {
+        return deskripsi;
+    }
+}

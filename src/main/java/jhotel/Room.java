@@ -2,8 +2,8 @@ package jhotel;
 /**
  * Write a description of class Room here.
  *
- * @author (your name)
- * @version (a version number or a date)
+ * @author Derni Ageng
+ * @version 2018
  */
 public abstract class Room {
     // instance variables - replace the example below with your own
@@ -15,6 +15,8 @@ public abstract class Room {
 
     /**
      * Constructor for objects of class Room
+     * @param hotel hotel yang ditempati.
+     * @param nomor_kamar nomor kamar hotel.
      */
     public Room(Hotel hotel, String nomor_kamar) {
         this.hotel = hotel;
@@ -26,63 +28,81 @@ public abstract class Room {
 
     }
 
-
+    /**
+     * Accessor for objects of class Room
+     * untuk meminta keterangan hotel
+     *
+     * @return hotel.
+     */
     public Hotel getHotel() {
         // put your code here
         return hotel;
     }
 
+    /**
+     * Accessor for objects of class Room
+     * untuk meminta keterangan nomor kamar
+     *
+     * @return nomor_kamar.
+     */
     public String getNomorkamar() {
         return nomor_kamar;
     }
 
-    //public boolean getStatusAvailable()
-    //{
-    //return isAvailable;
-    //}
-
+    /**
+     * Accessor for objects of class Room
+     * untuk meminta keterangan tarif
+     *
+     * @return dailyTariff.
+     */
     public double getDailyTariff() {
         return dailyTariff;
     }
 
+    /**
+     * Accessor for objects of class Room
+     * untuk meminta keterangan status kamar
+     *
+     * @return status_kamar.
+     */
     public StatusKamar getStatusKamar() {
         return status_kamar;
     }
 
+    /**
+     * Mutator untuk objek hotel
+     * @param hotel
+     */
     public void setHotel(Hotel hotel) {
         this.hotel = hotel;
     }
 
+    /**
+     * Mutator untuk objek nomor_kamar
+     * @param nomor_kamar
+     */
     public void setNomorKamar(String nomor_kamar) {
         this.nomor_kamar = nomor_kamar;
     }
 
-    //public void setStatusAvailable(boolean isAvailable)
-    //{
-    //this.isAvailable=isAvailable;
-    //}
-
+    /**
+     * mutator untuk objek dailyTariff
+     * @param dailytariff
+     */
     public void setDailyTariff(double dailytariff) {
         this.dailyTariff = dailytariff;
     }
 
+    /**
+     * mutator untuk objek StatusKamar
+     * @param status_kamar
+     */
     public void setStatusKamar(StatusKamar status_kamar) {
         this.status_kamar = status_kamar;
     }
 
     public abstract TipeKamar getTipeKamar();
 
-    public void printData() {
-
-        //System.out.println(hotel.getNama());
-        //System.out.println(nomor_kamar);
-        //System.out.println(isAvailable);
-        //System.out.println(dailyTariff);
-        //System.out.println(status_kamar);
-        //System.out.println(TipeKamar);
-
-
-    }
 
     public String toString() {
         if (DatabasePesanan.getPesananAktif(this) == null) {

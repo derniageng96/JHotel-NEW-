@@ -7,7 +7,6 @@ package jhotel;
  */
 public class Lokasi
 {
-    // instance variables - replace the example below with your own
     private float x_coord;
     private float y_coord;
     private String deskripsiLokasi;

@@ -1,14 +1,14 @@
 package jhotel;
 /**
- * Write a description of class PremiumRoom here.
+ * class PremiumRoom here.
  *
- * @author (your name)
- * @version (a version number or a date)
+ * @author Derni Ageng
+ * @version 2018
  */
 public class PremiumRoom extends Room
 {
     // instance variables - replace the example below with your own
-    private static double DISCOUNT;
+    private static double DISCOUNT = 0.3;
     private static TipeKamar TIPE_KAMAR = TipeKamar.Tipe_3;
 
     /**
@@ -19,29 +19,38 @@ public class PremiumRoom extends Room
         super(hotel, nomor_kamar);
         DISCOUNT = 0.3;
     }
-    
+
     /**
-     * An example of a method - replace this comment with your own
+     * mendaptkan nilai tipe kamar
      *
-     * @param  y  a sample parameter for a method
-     * @return    the sum of x and y
+     * @return TIPE_KAMAR
      */
     public TipeKamar getTipeKamar()
     {
         // put your code here
         return TIPE_KAMAR;
     }
-    
+
+    /**
+     * mendapatkan nilai diskon
+     *
+     * @return DISCOUNT
+     */
     public double getDiscount()
     {
         return DISCOUNT;
         
     }
-    
+
+    /**
+     * menentukan nilai tarif harian
+     *
+     * @param dailytariff nilai daily tariff
+     */
     public void setDailyTariff(double dailytariff)
     {
         //this.dailytariff=dailytariff;
-        dailyTariff = dailytariff * DISCOUNT;
+        this.dailyTariff = dailytariff * DISCOUNT;
         //dailytariff * DISCOUNT;
     }
 }

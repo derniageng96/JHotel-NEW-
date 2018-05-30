@@ -1,23 +1,35 @@
 package jhotel;
 /**
-  * Enumeration class TipeKamar - write a description of the enum class here
+  * Enumeration class TipeKamar
   *
-  * @author (your name here)
-  * @version (version number or date here)
+  * @author Derni Ageng
+  * @version 2018
   */
 public enum TipeKamar
 {
-            Tipe_1("Single"), Tipe_2("Double"), Tipe_3("Premium") ;
-            private String tipe;
-            TipeKamar(String tipe){
-                this.tipe=tipe;
-            }
+            Tipe_1("Single"),
+            Tipe_2("Double"),
+            Tipe_3("Premium") ;
+    private String deskripsi;
+    /**
+     * Constructor for TipeKamar
+     *
+     * @param deskripsi tipe kamar
+     *
+     */
+    TipeKamar(String deskripsi)
+    {
+        this.deskripsi = deskripsi;
+    }
 
-            public String tipe(){
-             return tipe;
-            }
-            public String toString()
-            {
-                return tipe;
-            }
-        }
+    /**
+     * pengembalian nilai enum yang dipanggil
+     *
+     * @return deskripsi tipe kamar
+     *
+     */
+    public String toString()
+    {
+        return deskripsi;
+    }
+}

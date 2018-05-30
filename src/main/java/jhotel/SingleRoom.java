@@ -1,9 +1,9 @@
 package jhotel;
 /**
- * Write a description of class SingleRoom here.
+ * class SingleRoom here.
  *
- * @author
- * @version (a version number or a date)
+ * @author Derni Ageng
+ * @version 2018
  */
 public class SingleRoom extends Room
 {
@@ -17,17 +17,26 @@ public class SingleRoom extends Room
     {
         // initialise instance variables
         super(hotel,nomor_kamar);
-
+        setDailyTariff(50000);
     }
 
     /**
-     * An example of a method - replace this comment with your own
+     * Method untuk mendapatkan nilai tipe kamar
      *
-     * @param
-     * @return    the sum of x and y
+     * @return TIPE_KAMAR
      */
     public TipeKamar getTipeKamar()
     {
         return TIPE_KAMAR;
+    }
+
+    /**
+     * menentukan nilai daily tarif
+     *
+     * @param dailytariff nilai daily tariff
+     */
+    public void setDailyTariff(double dailytariff)
+    {
+        dailyTariff = dailytariff;
     }
 }

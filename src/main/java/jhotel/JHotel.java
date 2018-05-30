@@ -27,31 +27,46 @@ public class JHotel
     }
 
     /**
-     * main
+     * main program
+     * @param args
      */
     public static void main(String[] args) 
     {
         //SpringApplication.run(JHotel.class, args);
         //System.out.println("\n\nTry-Catch 1 \n");
-        try{
-            DatabaseHotel.addHotel(new Hotel("Melati", new Lokasi(1, 1, "Taman Melati"), 7));
-            DatabaseHotel.addHotel(new Hotel("Mawar", new Lokasi(999, 999, "Taman Mawar"), 5));
+        Lokasi lokasi = new Lokasi(2,3,"Located in Indonesia");
+        Hotel hotel = new Hotel("Flower Hotel",lokasi,5);
+        try {
+            DatabaseHotel.addHotel(hotel);
+        } catch (HotelSudahAdaException h){
+            System.out.println(h.getPesan());
         }
-        catch(HotelSudahAdaException a)
-        {
-            a.getPesan();
+        Room single = new SingleRoom(hotel, "101");
+        single.setDailyTariff(400000);
+        try {
+            DatabaseRoom.addRoom(single);
+        } catch (RoomSudahAdaException r){
+            System.out.println(r.getPesan());
         }
 
-        try
-        {
-            DatabaseRoom.addRoom(new SingleRoom(DatabaseHotel.getHotel(1), "ME3011"));
-            DatabaseRoom.addRoom(new DoubleRoom(DatabaseHotel.getHotel(1), "ME5024"));
-            DatabaseRoom.addRoom(new SingleRoom(DatabaseHotel.getHotel(2), "MA101"));
+
+        Room dobel = new DoubleRoom(hotel, "202");
+        dobel.setDailyTariff(600000);
+        try {
+            DatabaseRoom.addRoom(dobel);
+        } catch (RoomSudahAdaException r){
+            System.out.println(r.getPesan());
         }
-        catch(RoomSudahAdaException a)
-        {
-            a.getPesan();
+
+        Room premium = new PremiumRoom(hotel, "303");
+        premium.setDailyTariff(2000000);
+        try {
+            DatabaseRoom.addRoom(premium);
+        } catch (RoomSudahAdaException r){
+            System.out.println(r.getPesan());
         }
+
+
         SpringApplication.run(JHotel.class, args);
 
     }
